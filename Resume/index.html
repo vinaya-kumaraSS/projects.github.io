@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinayakumara S S</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="boostrap/css/font.css">
+    <link rel="stylesheet" href="boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="boostrap/css/mdb.css">
+    <link rel="stylesheet" href="boostrap/css/style.css">
+    <style>
+    #about-me {
+    position: relative;
+    background-image: url(images/pexels-hasan-albari-1229861.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
+    width: 100%;
+  }
+  
+  #about-me .content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  
+  #about-me .content .image {
+    flex: 1;
+    margin-right: 70px;
+    text-align: right; /* Align the image to the right */
+  }
+  
+  #about-me .content .image img {
+    width: 150px;
+    height: 250px;
+    margin-left: 50px;
+    border-radius: 30px;
+  }
+  #about-me .content h1 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  #about-me .content p {
+    font-size: 18px;
+  }
+  
+  /* Media Queries */
+  
+  @media screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    #about-me .content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    #about-me .content .image {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    #about-me .content h1 {
+      font-size: 24px;
+    }
+  
+    #about-me .content p {
+      font-size: 16px;
+    }
+  }
+  /*about section animation*/
+  @keyframes colorChange {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+  
+      /* Apply animation to the <h1> element */
+      h1 {
+        background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: colorChange 5s linear infinite;
+        background-size: 200% auto;
+      }
+      
+    </style>
+</head>
+<body>
+    <!---navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-teal">
+        <div class="container"id="nav-container">
+            <p class="name"><span>V</span>inaya<span>k</span>umara S S</p>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#travel-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="home-navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item px-3">
+                        <a href="#" class="nav-link">
+                            <i class="fab fa fa-home"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#skills" class="nav-link">
+                            <i class="fa fa-skills"></i>Skills</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#Projects" class="nav-link">
+                            <i class=" fa-sharp fa-solid fa-circle-p"></i>Projects</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#search" class="nav-link">
+                            <i class="fa fa-design"></i>UI Design</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#certification" class="nav-link">
+                            <i class="fa fa-certificate"></i>Certification</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#text" class="nav-link">
+                            <i class="fa fa-medal"></i>Badges</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="#contact-block" class="nav-link">
+                            <i class="fa fa-address-book"></i>Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!---About me-->
+<div id="about-me">
+    <div class="content">
+      <div class="image">
+        <img src="images/vinay1.jpg" alt="Your Image">
+      </div>
+      <div class="text">
+        <h1>About Me</h1>
+        <div id="typing-text bg-dark">
+        <p>I'm Vinayakumara S S  and  I'm a</p>
+        <p>studing in Alva's Institute of Engineering and Technology Department of Computer Science and Engineering</p>
+    </div>
+    <a href="resume.pdf" download="Vinayakumara S S"><button class="btn btn-success">Resume</button></a>
+      </div>
+    </div>
+  </div>
+  
+
+<!--Skills section-->
+<section class="p-3 bg-teal text-white text-center">
+    <div class="container mt-5" id="nav-button">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4 mb-5" id="skills">Skills</h1>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-html5 fa-6x m-3"></i>
+                    <div class="text-box">HTML5</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-css3-alt fa-6x m-3"></i>
+                    <div class="text-box">CSS3</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-bootstrap fa-6x m-3"></i>
+                    <div class="text-box">Bootstrap</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-js fa-6x m-3"></i>
+                    <div class="text-box">JavaScript</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-java fa-6x m-3"></i>
+                    <div class="text-box">Java</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-python fa-6x m-3"></i>
+                    <div class="text-box">Python</div>
+                </div>
+                <div class="skills-icon">
+                    <i class="fab fa-brands fa-figma fa-6x m-3"></i>
+                    <div class="text-box">Figma</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!---My Projects-->
+<div class="container" id="Projects">
+    <section id="places" class= "p-3class-">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <h5 class="display-4 text-white">Projects</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mt-3">
+                    <img src="images/projects.jpg" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-teal btn-sm"><a href="https://vinaya-kumarass.github.io/Travel%20Yari/">view</a></button>
+                    </div>     
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mt-3">
+                    <img src="images/projects.jpg" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-teal btn-sm"><a href="https://vinaya-kumarass.github.io/Travel%20Yari/">view</a></button>
+                    </div>     
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mt-3">
+                    <img src="images/projects.jpg" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h3 class="card-title"></h3>
+                        <button class="btn btn-teal btn-sm"><a href="https://vinaya-kumarass.github.io/Travel%20Yari/">view</a></button>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+<!--Certification-->
+<div class="container" id="certification">
+<section id="places" class= "p-3class-">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h5 class="display-4 mt-5 text-white">Certification</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card"> 
+                <img src="images/postman.jpg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/Postman-certificate.pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card">               
+                <img src="images/java(spring board).jpeg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/java(spring board).pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card">
+                <img src="images/UIUX(great learning).jpeg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/UIUX(great learning).pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card">                
+                <img src="images/HTML(spring board).jpeg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/HTML(spring board).pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card">                
+                <img src="images/figma basic(linkedn).jpeg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/figma basic(linkedn).pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-3 bg-dark" id="certification-card">                
+                <img src="images/Tme management(spring board).jpeg" alt="" class="img-fluid" id="certificate-img">
+                <div class="card-body bg-dark">
+                    <h3 class="card-title"></h3>
+                    <a href="certificate files/Tme management(spring board).pdf">
+                        <button class="btn btn-sm text-dark">view</button></a>
+                </div>     
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+</div>
+<!--Badges-->
+<div class="container mt-5">
+    <h5 id="text" class="display-4 text-center p-3 pt-1"><i class="fab fa fa-medal text-warning"></i>Badges<i class="fab fa fa-medal text-warning"></i></h5>
+    <div class="row">
+        <div class="col-md-3 pb-3" id="bad-col">
+            <div class="card text-center" id="badge-img">
+                <div class="card-header bg-dark text-white">
+                    <img src="images/004.png" alt="">
+                </div>
+                <div class="card-header bg-dark text-white">Postman API</div>
+                <div class="card-text text-white bg-dark">
+                    <p>Issued :</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pb-3">
+            <div class="card text-center" id="badge-img">
+                <div class="card-header bg-dark text-white">
+                    <img src="images/001.png" alt="">
+                </div>
+                <div class="card-header bg-dark text-white">Hacker Rank</div>
+                <div class="card-text text-white bg-dark">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pb-3">
+            <div class="card text-center" id="badge-img">
+                <div class="card-header bg-dark text-white">
+                    <img src="images/002.png" alt="">
+                </div>
+                <div class="card-header bg-dark text-white">Hacker Rank</div>
+                <div class="card-text text-white bg-dark">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 pb-3">
+            <div class="card text-center" id="badge-img">
+                <div class="card-header bg-dark text-white">
+                    <img src="images/003.png" alt="">
+                </div>
+                <div class="card-header bg-dark text-white">Hacker Rank</div>
+                <div class="card-text text-white bg-dark">
+                </div>
+            </div>
+        </div> 
+</div>
+<!--Contact-->
+<div class="container bg-black">
+    <div class="container" id="contact-block">
+        <h2 class=" text-center text-white" id="contact-text">Contact me</h2>
+        <ul class="icon-row">
+            <li><a href="https://www.facebook.com/vinays.shiggavkar"><i class="fab fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/_vinay_ss/"><i class="fab fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/vinayakumara-s-s-01372a249/"><i class="fab fa-brands fa-linkedin"></i></a</li>
+            <li><a href="https://twitter.com/vinayakumar"><i class="fab fa-brands fa-twitter"></i></a</li>
+            <li><a href="https://github.com/vinaya-kumaraSS"><i class="fab fa-brands fa-github"></i></a></li>
+        </ul>
+        <div>
+            <p class="text-center mt-3">
+                <a href="mailto:vinaykumarss904@gmail.com"><button class="btn btn-sm mt-3">Send mail<i class="fab fa fa-light fa-envelope text-dark ml-1"></i></button></a>
+                <a href="tel:8861724899"><button class="btn btn-sm mt-3">Call<i class="fab fa fa-solid fa-phone ml-1"></i></button></a>
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="bg-light">
+    <p class="text-center text-bold py-2">Created By <a href="#typing-text" type="link">Vinay</a> | <i class="fab fa fa-light fa-copyright"></i> 2023 All rights reserved.</p>
+</footer>
+    <script src="boostrap/js/jquery.js"></script>
+    <script src="boostrap/js/popper.js"></script>
+    <script src="boostrap/js/bootstrap.js"></script>
+    <script src="boostrap/js/mdb.js"></script>
+</body>
+</html>
