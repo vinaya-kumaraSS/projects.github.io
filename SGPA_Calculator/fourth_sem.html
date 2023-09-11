@@ -29,15 +29,15 @@
     <div class="container my-5">
         <div class="card">
             <div class="card-body">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CS41">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CS42">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CS43">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CS44">
-            <input class="form-control form-control-sm" type="text"  placeholder="21BE45">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CSL46">
-            <input class="form-control form-control-sm" type="text"  placeholder="21KSK47 / 21KBK47">
-            <input class="form-control form-control-sm" type="text"  placeholder="21UH49">
-            <input class="form-control form-control-sm" type="text"  placeholder="21CSL49">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CS41" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CS42" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CS43" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CS44" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21BE45" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CSL46" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21KSK47 / 21KBK47" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21UH49" id="">
+            <input class="form-control form-control-sm" type="text"  placeholder="21CSL49" id="">
             <div class="text-center mt-3">
                 <div class="btn btn-sm btn-dark">Calculate</div>
             </div>
@@ -50,7 +50,55 @@
     <script src="boostrap/js/bootstrap.js"></script>
     <script src="boostrap/js/mdb.js"></script>
     <script>
-        
+        function marksAndCredits(marks, credits) {
+            if (marks <= 100 && marks >= 90) {
+                return 10 * credits;
+            } else if (marks >= 80 && marks < 90) {
+                return 9 * credits;
+            } else if (marks >= 70 && marks < 80) {
+                return 8 * credits;
+            } else if (marks >= 60 && marks < 70) {
+                return 7 * credits;
+            } else if (marks >= 55 && marks < 60) {
+                return 6 * credits;
+            } else if (marks >= 50 && marks < 55) {
+                return 5 * credits;
+            } else if (marks >= 40 && marks < 50) {
+                return 4 * credits;
+            } else if (marks >= 0 && marks < 40) {
+                console.log("fail");
+            }
+        }
+
+        function calculateSGPA() {
+            const MAT31 = parseInt(document.getElementById("").value);
+            const sub1 = marksAndCredits(MAT31, 3);
+
+            const CS32 = parseInt(document.getElementById("").value);
+            const sub2 = marksAndCredits(CS32, 4);
+
+            const CS33 = parseInt(document.getElementById("").value);
+            const sub3 = marksAndCredits(CS33, 4);
+
+            const CS34 = parseInt(document.getElementById("").value);
+            const sub4 = marksAndCredits(CS34, 3);
+
+            const CSL381 = parseInt(document.getElementById("").value);
+            const sub5 = marksAndCredits(CSL381, 1);
+
+            const CSL35 = parseInt(document.getElementById("").value);
+            const sub6 = marksAndCredits(CSL35, 1);
+
+            const SCR36 = parseInt(document.getElementById("").value);
+            const sub7 = marksAndCredits(SCR36, 1);
+
+            const CIP37 = parseInt(document.getElementById("").value);
+            const sub8 = marksAndCredits(CIP37, 1);
+
+            const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8) / 18;
+
+            document.getElementById("result").innerHTML = "SGPA: " + total_sgpa;
+        }
     </script>
 </body>
 </html>
