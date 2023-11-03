@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,53 +11,60 @@
     <link rel="stylesheet" href="boostrap/css/mdb.css">
     <link rel="stylesheet" href="boostrap/css/style.css">
     <style>
-        body{
+        body {
             background-color: black;
         }
-        html{
+
+        html {
             scroll-behavior: smooth;
         }
-        #subject{
+
+        #subject {
             text-transform: uppercase;
             font-family: Rockwell;
             color: red;
         }
-        .card{
+
+        .card {
             border-radius: 20px;
         }
-        .form-control{
+
+        .form-control {
             margin-top: 20px;
         }
-        #result{
+
+        #result {
             font-size: 25px;
         }
     </style>
 </head>
+
 <body>
     <h1 class="text-center mt-5" id="subject">Chemistry Cycle</h1>
     <div class="container my-5">
         <div class="card">
             <div class="card-body">
                 <form action="">
-            <input class="form-control form-control" type="text"  placeholder="21MAT21" id="MAT21">
-            <input class="form-control form-control" type="text"  placeholder="21CHE12/22 " id="CHE22">
-            <input class="form-control form-control" type="text"  placeholder="21PSP23/13" id="PSP23">
-            <input class="form-control form-control" type="text"  placeholder="21ELN14/24 " id="ELN24">
-            <input class="form-control form-control" type="text"  placeholder="21EME15/25" id="EME25">
-            <input class="form-control form-control" type="text"  placeholder="21CHEL16/26" id="CHEL26">
-            <input class="form-control form-control" type="text"  placeholder="21CPL27/17 " id="CPL27">
-            <input class="form-control form-control" type="text"  placeholder="21EGH28" id="EGH28">
-            <input class="form-control form-control" type="text"  placeholder="21SFH29" id="SFH29">
-            <div class="text-center mt-3">
-                <button class= "btn btn-sm btn-warning text-dark " value="reset">Reset</button>
-                <button type="button" class="btn btn-sm btn-success text-dark" onclick="calculateSGPA()">Calculate</button>
+                    <input class="form-control form-control" type="text" placeholder="21MAT21" id="MAT21">
+                    <input class="form-control form-control" type="text" placeholder="21CHE12/22 " id="CHE22">
+                    <input class="form-control form-control" type="text" placeholder="21PSP23/13" id="PSP23">
+                    <input class="form-control form-control" type="text" placeholder="21ELN14/24 " id="ELN24">
+                    <input class="form-control form-control" type="text" placeholder="21EME15/25" id="EME25">
+                    <input class="form-control form-control" type="text" placeholder="21CHEL16/26" id="CHEL26">
+                    <input class="form-control form-control" type="text" placeholder="21CPL27/17 " id="CPL27">
+                    <input class="form-control form-control" type="text" placeholder="21EGH28" id="EGH28">
+                    <input class="form-control form-control" type="text" placeholder="21SFH29" id="SFH29">
+                    <div class="text-center mt-3">
+                        <button class="btn btn-sm btn-warning text-dark " value="reset">Reset</button>
+                        <button type="button" class="btn btn-sm btn-success text-dark"
+                            onclick="calculateSGPA()">Calculate</button>
+                    </div>
+                </form>
+                <div id="result" class="text-center mt-3">SGPA :</div>
             </div>
-            </form>
-            <div id="result" class="text-center mt-3">SGPA :</div>
-        </div>
         </div>
     </div>
-    <div class="container"></div>    
+    <div class="container"></div>
     <script src="boostrap/js/jquery.js"></script>
     <script src="boostrap/js/popper.js"></script>
     <script src="boostrap/js/bootstrap.js"></script>
@@ -109,10 +117,11 @@
             const SFH29 = parseInt(document.getElementById("SFH29").value);
             const sub9 = marksAndCredits(SFH29, 1);
 
-            const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8+sub9) / 20;
+            const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8 + sub9) / 20;
 
-            document.getElementById("result").innerHTML = "SGPA: " + total_sgpa;
+            document.getElementById("result").innerHTML = "SGPA: " + total_sgpa.toFixed(2);
         }
     </script>
 </body>
+
 </html>
