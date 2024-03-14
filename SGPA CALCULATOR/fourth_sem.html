@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="semesterApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4th semester</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="boostrap/css/font.css">
+    <link rel="stylesheet" href="boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="boostrap/css/mdb.css">
+    <link rel="stylesheet" href="boostrap/css/style.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #subject {
+            text-transform: uppercase;
+            font-family: Rockwell;
+            color: red;
+        }
+
+        .card {
+            border: 2px solid rgb(184, 20, 255);
+            width: 500px;
+            margin: 0 auto; /* Center align the card */
+            padding: 50px;
+            background-color: black;
+        }
+
+        .form-control {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        #result {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="SemesterController">
+    <h1 class="text-light text-center mt-5">4th semester</h1>
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <form name="semesterForm">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**41" ng-model="MATCS41" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**42" ng-model="CS42" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**43" ng-model="CS43" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**44" ng-model="CS44" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21BE45" ng-model="BE45" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**L46" ng-model="CSL46" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21**47 / 21**47" ng-model="KSK47" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21UH49" ng-model="UH49" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21C**48*" ng-model="CSL481" ng-required="true">
+                    <input class="form-control form-control-sm" type="text" placeholder="21INT49" ng-model="INT49" ng-required="true">
+                    <div class="text-center mt-5">
+                        <button class="btn btn-sm btn-warning text-dark" ng-click="resetValues()">Reset</button>
+                        <button type="button" class="btn btn-sm btn-success text-dark" ng-click="calculateSGPA()" ng-disabled="semesterForm.$invalid">Calculate</button>
+                    </div>
+                </form>
+                <div id="result" class="text-center mt-3" ng-show="sgpa !== undefined">SGPA: {{ sgpa }}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="boostrap/js/jquery.js"></script>
+    <script src="boostrap/js/popper.js"></script>
+    <script src="boostrap/js/bootstrap.js"></script>
+    <script src="boostrap/js/mdb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('semesterApp', []);
+
+        app.controller('SemesterController', function ($scope) {
+            $scope.resetValues = function () {
+                $scope.MATCS41 = '';
+                $scope.CS42 = '';
+                $scope.CS43 = '';
+                $scope.CS44 = '';
+                $scope.BE45 = '';
+                $scope.CSL46 = '';
+                $scope.KSK47 = '';
+                $scope.UH49 = '';
+                $scope.CSL481 = '';
+                $scope.INT49 = '';
+                $scope.sgpa = '';
+            };
+
+            $scope.calculateSGPA = function () {
+                const marksAndCredits = function (marks, credits) {
+                    if (marks <= 100 && marks >= 90) {
+                        return 10 * credits;
+                    } else if (marks >= 80 && marks < 90) {
+                        return 9 * credits;
+                    } else if (marks >= 70 && marks < 80) {
+                        return 8 * credits;
+                    } else if (marks >= 60 && marks < 70) {
+                        return 7 * credits;
+                    } else if (marks >= 55 && marks < 60) {
+                        return 6 * credits;
+                    } else if (marks >= 50 && marks < 55) {
+                        return 5 * credits;
+                    } else if (marks >= 40 && marks < 50) {
+                        return 4 * credits;
+                    } else if (marks >= 0 && marks < 40) {
+                        console.log("fail");
+                    }
+                };
+
+                const sub1 = marksAndCredits(parseInt($scope.MATCS41), 3);
+                const sub2 = marksAndCredits(parseInt($scope.CS42), 4);
+                const sub3 = marksAndCredits(parseInt($scope.CS43), 4);
+                const sub4 = marksAndCredits(parseInt($scope.CS44), 3);
+                const sub5 = marksAndCredits(parseInt($scope.BE45), 2);
+                const sub6 = marksAndCredits(parseInt($scope.CSL46), 1);
+                const sub7 = marksAndCredits(parseInt($scope.KSK47), 1);
+                const sub8 = marksAndCredits(parseInt($scope.UH49), 1);
+                const sub9 = marksAndCredits(parseInt($scope.CSL481), 1);
+                const sub10 = marksAndCredits(parseInt($scope.INT49), 2);
+
+                const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8 + sub9 + sub10) / 22;
+
+                $scope.sgpa = total_sgpa.toFixed(2);
+            };
+        });
+    </script>
+</body>
+
+</html>

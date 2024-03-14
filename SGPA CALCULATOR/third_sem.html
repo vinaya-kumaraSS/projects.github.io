@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="semesterApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3rd semester</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="boostrap/css/font.css">
+    <link rel="stylesheet" href="boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="boostrap/css/mdb.css">
+    <link rel="stylesheet" href="boostrap/css/style.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #subject {
+            text-transform: uppercase;
+            font-family: Rockwell;
+            color: red;
+        }
+
+        .card {
+            border: 2px solid rgb(184, 20, 255);
+            width: 500px;
+            margin: 0 auto; /* Center align the card */
+            padding: 50px;
+            background-color: black;
+        }
+
+        .form-control {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        #result {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="SemesterController">
+    <h1 class="text-center mt-4" id="subject">3rd semester</h1>
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <form name="semesterForm" novalidate>
+                    <input class="form-control form-control " type="text" ng-model="MAT31" placeholder="21MAT31" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CS32" placeholder="21CS32" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CS33" placeholder="21CS33" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CS34" placeholder="21CS34" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CSL35" placeholder="21CSL35" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="SCR36" placeholder="21SCR36" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CIP37" placeholder="21CIP37 / 21KSK37 / 21KBK37" ng-required="true">
+                    <input class="form-control form-control" type="text" ng-model="CSL381" placeholder="21CSL381" ng-required="true">
+                    <div class="text-center mt-5">
+                        <button class="btn btn-sm btn-warning text-dark" value="reset" ng-click="resetValues()">Reset</button>
+                        <button type="button" class="btn btn-sm btn-success text-dark" ng-click="calculateSGPA()" ng-disabled="semesterForm.$invalid">Calculate</button>
+                    </div>
+                </form>
+                <div id="result" class="text-center mt-3" ng-show="sgpa !== undefined">SGPA: {{ sgpa }}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="boostrap/js/jquery.js"></script>
+    <script src="boostrap/js/popper.js"></script>
+    <script src="boostrap/js/bootstrap.js"></script>
+    <script src="boostrap/js/mdb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('semesterApp', []);
+
+        app.controller('SemesterController', function ($scope) {
+            $scope.resetValues = function () {
+                $scope.MAT31 = '';
+                $scope.CS32 = '';
+                $scope.CS33 = '';
+                $scope.CS34 = '';
+                $scope.CSL35 = '';
+                $scope.SCR36 = '';
+                $scope.CIP37 = '';
+                $scope.CSL381 = '';
+                $scope.sgpa = undefined;
+            };
+
+            $scope.calculateSGPA = function () {
+                const marksAndCredits = function (marks, credits) {
+                    if (marks <= 100 && marks >= 90) {
+                        return 10 * credits;
+                    } else if (marks >= 80 && marks < 90) {
+                        return 9 * credits;
+                    } else if (marks >= 70 && marks < 80) {
+                        return 8 * credits;
+                    } else if (marks >= 60 && marks < 70) {
+                        return 7 * credits;
+                    } else if (marks >= 55 && marks < 60) {
+                        return 6 * credits;
+                    } else if (marks >= 50 && marks < 55) {
+                        return 5 * credits;
+                    } else if (marks >= 40 && marks < 50) {
+                        return 4 * credits;
+                    } else if (marks >= 0 && marks < 40) {
+                        return 0; // fail
+                    }
+                };
+
+                const MAT31 = parseInt($scope.MAT31);
+                const CS32 = parseInt($scope.CS32);
+                const CS33 = parseInt($scope.CS33);
+                const CS34 = parseInt($scope.CS34);
+                const CSL35 = parseInt($scope.CSL35);
+                const SCR36 = parseInt($scope.SCR36);
+                const CIP37 = parseInt($scope.CIP37);
+                const CSL381 = parseInt($scope.CSL381);
+
+                const sub1 = marksAndCredits(MAT31, 3);
+                const sub2 = marksAndCredits(CS32, 4);
+                const sub3 = marksAndCredits(CS33, 4);
+                const sub4 = marksAndCredits(CS34, 3);
+                const sub5 = marksAndCredits(CSL35, 1);
+                const sub6 = marksAndCredits(SCR36, 1);
+                const sub7 = marksAndCredits(CIP37, 1);
+                const sub8 = marksAndCredits(CSL381, 1);
+
+                const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8) / 18;
+
+                $scope.sgpa = total_sgpa.toFixed(2);
+            };
+        });
+    </script>
+</body>
+
+</html>

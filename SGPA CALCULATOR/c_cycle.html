@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chemistryCycleApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Cycle</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="boostrap/css/font.css">
+    <link rel="stylesheet" href="boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="boostrap/css/mdb.css">
+    <link rel="stylesheet" href="boostrap/css/style.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #subject {
+            text-transform: uppercase;
+            font-family: Rockwell;
+            color: red;
+        }
+
+        .card {
+            border: 2px solid rgb(184, 20, 255);
+            width: 500px;
+            margin: 0 auto; /* Center align the card */
+            padding: 50px;
+            background-color: black;
+        }
+
+        .form-control {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        #result {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="ChemistryCycleController">
+    <h1 class="text-center mt-5" id="subject">Chemistry Cycle</h1>
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <input class="form-control form-control" type="text" placeholder="21MAT21" ng-model="MAT21" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21CHE12/22" ng-model="CHE22" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21PSP23/13" ng-model="PSP23" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21ELN14/24" ng-model="ELN24" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21EME15/25" ng-model="EME25" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21CHEL16/26" ng-model="CHEL26" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21CPL27/17" ng-model="CPL27" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21EGH28" ng-model="EGH28" ng-required="true">
+                    <input class="form-control form-control" type="text" placeholder="21SFH29" ng-model="SFH29" ng-required="true">
+                    <div class="text-center mt-5">
+                        <button class="btn btn-sm btn-warning text-dark" ng-click="resetValues()">Reset</button>
+                        <button type="button" class="btn btn-sm btn-success text-dark" ng-click="calculateSGPA()">Calculate</button>
+                    </div>
+                </form>
+                <div id="result" class="text-center mt-3">SGPA: {{ sgpa }}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="boostrap/js/jquery.js"></script>
+    <script src="boostrap/js/popper.js"></script>
+    <script src="boostrap/js/bootstrap.js"></script>
+    <script src="boostrap/js/mdb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('chemistryCycleApp', []);
+
+        app.controller('ChemistryCycleController', function ($scope) {
+            $scope.resetValues = function () {
+                $scope.MAT21 = '';
+                $scope.CHE22 = '';
+                $scope.PSP23 = '';
+                $scope.ELN24 = '';
+                $scope.EME25 = '';
+                $scope.CHEL26 = '';
+                $scope.CPL27 = '';
+                $scope.EGH28 = '';
+                $scope.SFH29 = '';
+                $scope.sgpa = '';
+            };
+
+            $scope.calculateSGPA = function () {
+                const marksAndCredits = function (marks, credits) {
+                    if (marks <= 100 && marks >= 90) {
+                        return 10 * credits;
+                    } else if (marks >= 80 && marks < 90) {
+                        return 9 * credits;
+                    } else if (marks >= 70 && marks < 80) {
+                        return 8 * credits;
+                    } else if (marks >= 60 && marks < 70) {
+                        return 7 * credits;
+                    } else if (marks >= 55 && marks < 60) {
+                        return 6 * credits;
+                    } else if (marks >= 50 && marks < 55) {
+                        return 5 * credits;
+                    } else if (marks >= 40 && marks < 50) {
+                        return 4 * credits;
+                    } else if (marks >= 0 && marks < 40) {
+                        console.log("fail");
+                    }
+                };
+
+                const sub1 = marksAndCredits(parseInt($scope.MAT21), 3);
+                const sub2 = marksAndCredits(parseInt($scope.CHE22), 3);
+                const sub3 = marksAndCredits(parseInt($scope.PSP23), 3);
+                const sub4 = marksAndCredits(parseInt($scope.ELN24), 3);
+                const sub5 = marksAndCredits(parseInt($scope.EME25), 3);
+                const sub6 = marksAndCredits(parseInt($scope.CHEL26), 1);
+                const sub7 = marksAndCredits(parseInt($scope.CPL27), 1);
+                const sub8 = marksAndCredits(parseInt($scope.EGH28), 2);
+                const sub9 = marksAndCredits(parseInt($scope.SFH29), 1);
+
+                const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8 + sub9) / 20;
+
+                $scope.sgpa = total_sgpa.toFixed(2);
+            };
+        });
+    </script>
+</body>
+
+</html>

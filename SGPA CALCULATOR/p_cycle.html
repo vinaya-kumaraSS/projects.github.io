@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="physicsCycleApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Cycle</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="boostrap/css/font.css">
+    <link rel="stylesheet" href="boostrap/css/bootstrap.css">
+    <link rel="stylesheet" href="boostrap/css/mdb.css">
+    <link rel="stylesheet" href="boostrap/css/style.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #subject {
+            text-transform: uppercase;
+            font-family: Rockwell;
+            color: red;
+        }
+
+        .card {
+            border: 1px solid rgb(184, 20, 255);
+            width: 500px;
+            margin: 0 auto; /* Center align the card */
+            padding: 50px;
+        }
+
+        .form-control {
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        #result {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body ng-controller="PhysicsCycleController">
+    <h1 class="text-center mt-5" id="subject">Physics Cycle</h1>
+    <div class="container my-5">
+        <div class="card bg-dark">
+            <div class="card-body">
+                <form name="physicsForm" novalidate>
+                    <input class="form-control form-control" type="text" placeholder="21MAT11" ng-model="MAT11" required>
+                    <input class="form-control form-control" type="text" placeholder="21PHY12/22" ng-model="PHY12" required>
+                    <input class="form-control form-control" type="text" placeholder="21ELE13/23" ng-model="ELE13" required>
+                    <input class="form-control form-control" type="text" placeholder="21CIV14/24" ng-model="CIV14" required>
+                    <input class="form-control form-control" type="text" placeholder="21EVN15/25" ng-model="EVN15" required>
+                    <input class="form-control form-control" type="text" placeholder="21PHYL16/26" ng-model="PHYL16" required>
+                    <input class="form-control form-control" type="text" placeholder="21ELE17/27" ng-model="ELE17" required>
+                    <input class="form-control form-control" type="text" placeholder="21EGH18" ng-model="EGH18" required>
+                    <input class="form-control form-control" type="text" placeholder="21IDT19/29" ng-model="IDT19" required>
+                    <div class="text-center mt-5">
+                        <button class="btn btn-sm btn-warning text-dark " value="reset" ng-click="resetValues()">Reset</button>
+                        <button type="button" class="btn btn-sm btn-success text-dark" ng-click="calculateSGPA()" ng-disabled="physicsForm.$invalid">Calculate</button>
+                    </div>
+                </form>
+                <div id="result" class="text-center mt-3">SGPA: {{ sgpa }}</div>
+            </div>
+        </div>
+    </div>
+    <script src="boostrap/js/jquery.js"></script>
+    <script src="boostrap/js/popper.js"></script>
+    <script src="boostrap/js/bootstrap.js"></script>
+    <script src="boostrap/js/mdb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module('physicsCycleApp', []);
+
+        app.controller('PhysicsCycleController', function ($scope) {
+            $scope.resetValues = function () {
+                $scope.MAT11 = '';
+                $scope.PHY12 = '';
+                $scope.ELE13 = '';
+                $scope.CIV14 = '';
+                $scope.EVN15 = '';
+                $scope.PHYL16 = '';
+                $scope.ELE17 = '';
+                $scope.EGH18 = '';
+                $scope.IDT19 = '';
+                $scope.sgpa = '';
+            };
+
+            $scope.calculateSGPA = function () {
+                // Calculation logic here
+                const marksAndCredits = function (marks, credits) {
+                    if (marks <= 100 && marks >= 90) {
+                        return 10 * credits;
+                    } else if (marks >= 80 && marks < 90) {
+                        return 9 * credits;
+                    } else if (marks >= 70 && marks < 80) {
+                        return 8 * credits;
+                    } else if (marks >= 60 && marks < 70) {
+                        return 7 * credits;
+                    } else if (marks >= 55 && marks < 60) {
+                        return 6 * credits;
+                    } else if (marks >= 50 && marks < 55) {
+                        return 5 * credits;
+                    } else if (marks >= 40 && marks < 50) {
+                        return 4 * credits;
+                    } else if (marks >= 0 && marks < 40) {
+                        return 0; // fail
+                    }
+                };
+
+                // Convert input values to integers
+                const MAT11 = parseInt($scope.MAT11);
+                const PHY12 = parseInt($scope.PHY12);
+                const ELE13 = parseInt($scope.ELE13);
+                const CIV14 = parseInt($scope.CIV14);
+                const EVN15 = parseInt($scope.EVN15);
+                const PHYL16 = parseInt($scope.PHYL16);
+                const ELE17 = parseInt($scope.ELE17);
+                const EGH18 = parseInt($scope.EGH18);
+                const IDT19 = parseInt($scope.IDT19);
+
+                // Calculate marks and credits for each subject
+                const sub1 = marksAndCredits(MAT11, 3);
+                const sub2 = marksAndCredits(PHY12, 3);
+                const sub3 = marksAndCredits(ELE13, 3);
+                const sub4 = marksAndCredits(CIV14, 3);
+                const sub5 = marksAndCredits(EVN15, 3);
+                const sub6 = marksAndCredits(PHYL16, 1);
+                const sub7 = marksAndCredits(ELE17, 1);
+                const sub8 = marksAndCredits(EGH18, 2);
+                const sub9 = marksAndCredits(IDT19, 1);
+
+                // Calculate total SGPA
+                const total_sgpa = (sub1 + sub2 + sub3 + sub4 + sub5 + sub6 + sub7 + sub8 + sub9) / 20;
+
+                // Assign calculated SGPA to scope variable
+                $scope.sgpa = total_sgpa.toFixed(2);
+            };
+        });
+    </script>
+</body>
+
+</html>
